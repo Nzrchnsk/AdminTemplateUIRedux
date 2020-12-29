@@ -1,13 +1,15 @@
 export default class ApiService {
     getUsers() {
-        return [
+        return[
             {
                 id: 1,
-                name: "test1"
+                email: 'admin@gmail.com',
+                name: 'admin'
             },
             {
                 id: 2,
-                name: "test2"
+                email: 'user@gmail.com',
+                name: 'user'
             }
         ];
     }
