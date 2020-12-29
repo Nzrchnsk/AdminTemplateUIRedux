@@ -1,9 +1,11 @@
 import React from 'react';
 import './app.css';
+import {WithApiService} from '../hoc';
 
-const App = () =>{
+const App = ({apiService}) =>{
+    console.log(apiService.getUsers());
     return <div>App</div>
 
 };
 
-export default App;
+export default WithApiService()(App);
