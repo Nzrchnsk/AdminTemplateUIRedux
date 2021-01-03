@@ -1,5 +1,5 @@
-import WithApiService from "./with-api-service";
+import withApiService from "./with-api-service";
 
 export {
-    WithApiService
+    withApiService
 };

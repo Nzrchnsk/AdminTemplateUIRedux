@@ -1,11 +1,23 @@
-
 const usersLoaded = (newUsers) => {
     return {
-        type: 'USER_LOADED',
+        type: 'USERS_LOADED',
         payload: newUsers
+    };
+};
+const usersRequested = () => {
+    return {
+        type: 'USERS_REQUESTED'
+    };
+};
+
+const toggleSidebar = () => {
+    return {
+        type: 'TOGGLE_SIDEBAR'
     };
 };
 
 export {
-    usersLoaded
+    usersLoaded,
+    usersRequested,
+    toggleSidebar,
 };

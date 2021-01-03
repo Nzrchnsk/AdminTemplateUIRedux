@@ -1,10 +1,14 @@
 import React from 'react';
+import UsersTable from "../users-table";
 
-import UserList from "../user-list";
+// import UserList from "../user-list";
 
 const UsersPage = () => {
     return (
-        <UserList />
+        <div>
+            {/*<UserList/>*/}
+            <UsersTable/>
+        </div>
     );
 };
 

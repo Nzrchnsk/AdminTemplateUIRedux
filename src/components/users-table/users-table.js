@@ -2,15 +2,19 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 
-import UserListItem from "../user-list-item";
+
+import {MdModeEdit} from "react-icons/md";
+import {RiDeleteBin2Fill} from "react-icons/ri";
+
 import {compose} from '../../utils'
 import {withApiService} from '../hoc';
 import {usersLoaded, usersRequested} from '../../actions'
 
-import './user-list.css';
+import './users-table.css';
 import Spinner from "../spinner";
+import {Link} from "react-router-dom";
 
-class UserList extends Component {
+class UsersTable extends Component {
 
     componentDidMount() {
         //1. recive data
@@ -34,21 +38,44 @@ class UserList extends Component {
 
     render() {
         const {users, loading} = this.props;
-        if(loading){
-            return <Spinner />;
+        if (loading) {
+            return <Spinner/>;
         }
         return (
-            <ul className="user-list">
+            <table className="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">email</th>
+                    <th scope="col">name</th>
+                    <th scope="col">actions</th>
+                </tr>
+                </thead>
+                <tbody>
                 {
-                    users.map((user) => {
+                    users.map((user, index) => {
                         return (
-                            <li key={user.id}>
-                                <UserListItem user={user}/>
-                            </li>
+                            <tr>
+                                <th scope="row">{index + 1}</th>
+                                <td>{user.id}</td>
+                                <td>{user.email}</td>
+                                <td>{user.name}</td>
+                                <td>
+                                    <Link to="#" className="item-action">
+                                        <MdModeEdit/>
+                                    </Link>
+                                    <Link to="#" className="item-action">
+                                        <RiDeleteBin2Fill/>
+                                    </Link>
+
+                                </td>
+                            </tr>
                         )
                     })
                 }
-            </ul>
+                </tbody>
+            </table>
         );
     }
 }
@@ -98,7 +125,7 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
     withApiService(),
     connect(mapStateToProps, mapDispatchToProps)
-)(UserList);
+)(UsersTable);
 
 //Без функции compose
 // export default withApiService()(
